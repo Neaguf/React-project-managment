@@ -1,6 +1,6 @@
-import { forwardedRef } from "react";
+import { forwardRef } from "react";
 
-const Input = forwardedRef(function Input({ label, textarea, ...props }, ref) {
+const Input = forwardRef(function Input({ label, textarea, ...props }, ref) {
   const classes =
     "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focuse:outline-non focuse:border-stone-600";
   return (
@@ -17,4 +17,5 @@ const Input = forwardedRef(function Input({ label, textarea, ...props }, ref) {
   );
 });
 
+export default Input;
 // folosim forwardedref pentru a primii refs din alta componenta

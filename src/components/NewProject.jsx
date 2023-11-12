@@ -1,6 +1,7 @@
 import Input from "./Input";
+// import Input from "postcss/lib/input";
 import { useRef } from "react";
-export default function NewProject() {
+export default function NewProject({ onAdd }) {
   let title = useRef();
   let description = useRef();
   let dueDate = useRef();
@@ -10,6 +11,12 @@ export default function NewProject() {
     const enteredDescription = description.current.value;
     const enteredDueDate = dueDate.current.value;
     // validation below
+
+    onAdd({
+      title: enteredTitle,
+      description: enteredDescription,
+      dudeDate: enteredDueDate,
+    });
   }
 
   return (
@@ -22,7 +29,7 @@ export default function NewProject() {
         </li>
         <li>
           <button
-            onclick={handleSave}
+            onClick={handleSave}
             className=" px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950"
           >
             Save
@@ -30,9 +37,9 @@ export default function NewProject() {
         </li>
       </menu>
       <div>
-        <Input ref={title} label="Title" />
+        <Input type="text" ref={title} label="Title" />
         <Input ref={description} label="Description" textarea />
-        <Input ref={dueDate} label="Due date" />
+        <Input type="date" ref={dueDate} label="Due date" />
       </div>
     </div>
   );
